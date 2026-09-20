@@ -28,11 +28,24 @@ Flutter 3.47 / Dart 3.13, Isar + `isar_flutter_libs`, Riverpod 2.6, `flutter_sta
 ## Getting Started
 ```bash
 flutter pub get
+# Isar 3.1.0+1 needs namespace patch for AGP 9.1/Gradle 9.3 (one-time after each pub get)
+./tool/patch_isar.sh
 dart run build_runner build --delete-conflicting-outputs  # regenerates lib/models/*.g.dart if needed
-flutter run          # android/ios
+flutter run          # android/ios (tested SM-A137F A13)
 flutter analyze
 flutter test
 ```
+
+### Troubleshooting - Samsung A13 / AGP 9.1
+```
+FAILURE: Namespace not specified. Specify a namespace in module isar_flutter_libs
+```
+Fix: `isar_flutter_libs-3.1.0+1` predates namespaces. This repo patches it:
+```bash
+./tool/patch_isar.sh  # adds namespace 'dev.isar.isar_flutter_libs' + compileSdk 34
+flutter clean && flutter build apk --debug  # now builds in ~16s incremental, 104s first
+```
+The patch edits `~/.pub-cache/hosted/pub.dev/isar_flutter_libs-3.1.0+1/android/build.gradle` (ephemeral) + is documented in `tool/patch_isar.sh`. No `INTERNET` added — still offline.
 
 ## Project Layout
 ```
