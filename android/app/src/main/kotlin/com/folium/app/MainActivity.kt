@@ -1,4 +1,4 @@
-package com.example.keep_clone
+package com.folium.app
 
 import io.flutter.embedding.android.FlutterActivity
 

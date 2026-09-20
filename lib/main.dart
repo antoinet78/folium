@@ -15,19 +15,19 @@ Future<void> main() async {
     debugPrint('Isar open error: $e');
   }
 
-  runApp(const ProviderScope(child: KeepCloneApp()));
+  runApp(const ProviderScope(child: FoliumApp()));
 }
 
-class KeepCloneApp extends StatelessWidget {
-  const KeepCloneApp({super.key});
+class FoliumApp extends StatelessWidget {
+  const FoliumApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final lightScheme = ColorScheme.fromSeed(seedColor: const Color(0xFFFBBC04), brightness: Brightness.light);
-    final darkScheme = ColorScheme.fromSeed(seedColor: const Color(0xFFFBBC04), brightness: Brightness.dark);
+    final lightScheme = ColorScheme.fromSeed(seedColor: const Color(0xFF2D4A22), brightness: Brightness.light);
+    final darkScheme = ColorScheme.fromSeed(seedColor: const Color(0xFF2D4A22), brightness: Brightness.dark);
 
     return MaterialApp(
-      title: 'Keep Clone',
+      title: 'Folium',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: lightScheme,

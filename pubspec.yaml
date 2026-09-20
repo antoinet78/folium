@@ -1,5 +1,5 @@
-name: keep_clone
-description: Offline-first Google Keep clone - 100% local, zero network, 120 FPS.
+name: folium
+description: Folium — offline-first notes, 100% local, zero network, 120 FPS.
 publish_to: 'none'
 version: 1.0.0+1
 

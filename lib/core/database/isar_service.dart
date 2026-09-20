@@ -47,7 +47,7 @@ class IsarService {
     _isar = await Isar.open(
       [NoteSchema, LabelSchema, AttachmentSchema],
       directory: dbDir.path,
-      name: 'keep_clone',
+      name: 'folium',
       inspector: kDebugMode,
     );
     _isOpen = true;

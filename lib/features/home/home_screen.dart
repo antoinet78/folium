@@ -56,7 +56,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.surface,
-      drawer: _KeepDrawer(onClose: () => Navigator.pop(context)),
+      drawer: _FoliumDrawer(onClose: () => Navigator.pop(context)),
       body: SafeArea(
         child: Column(
           children: [
@@ -286,7 +286,7 @@ class _EmptyState extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(isSearching ? Icons.search_off : Icons.lightbulb_outline,
+            Icon(isSearching ? Icons.search_off : Icons.eco_outlined,
                 size: 96, color: Theme.of(context).colorScheme.outlineVariant),
             const SizedBox(height: 16),
             Text(
@@ -338,8 +338,8 @@ class _SelectionBar extends StatelessWidget {
   }
 }
 
-class _KeepDrawer extends StatelessWidget {
-  const _KeepDrawer({required this.onClose});
+class _FoliumDrawer extends StatelessWidget {
+  const _FoliumDrawer({required this.onClose});
   final VoidCallback onClose;
 
   @override
@@ -350,9 +350,24 @@ class _KeepDrawer extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.fromLTRB(16, 24, 16, 12),
-          child: Text('Keep Clone', style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w600)),
+          child: Row(
+            children: [
+              Container(
+                width: 36,
+                height: 36,
+                decoration: BoxDecoration(
+                  color: const Color(0xFFF5F1E8),
+                  borderRadius: BorderRadius.circular(8),
+                  border: Border.all(color: const Color(0xFFD4C7B4)),
+                ),
+                child: const Icon(Icons.eco_outlined, size: 22, color: Color(0xFF2D4A22)),
+              ),
+              const SizedBox(width: 12),
+              Text('Folium', style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w600)),
+            ],
+          ),
         ),
-        const NavigationDrawerDestination(icon: Icon(Icons.lightbulb_outline), label: Text('Notes')),
+        const NavigationDrawerDestination(icon: Icon(Icons.eco_outlined), label: Text('Notes')),
         const NavigationDrawerDestination(icon: Icon(Icons.notifications_none), label: Text('Reminders')),
         const NavigationDrawerDestination(icon: Icon(Icons.label_outline), label: Text('Labels')),
         const Divider(),
